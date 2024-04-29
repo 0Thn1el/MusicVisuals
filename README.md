@@ -1,89 +1,103 @@
 # Music Visualiser Project
 
-Name:
+Name: Othniel Alfa
 
-Student Number: 
+Student Number: C22447532
 
-## Instructions
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
 
+The song I chose for this assignment is "IF YOU GO" by Eem Triplin. It holds a rather peculiar yet emotional chord progression, The 808's throughout the song speed up  the music with their wide and short bass, showcasing the ability of the lerpbuffer. 
+
+I showed 2 cases of visuals in my project, 1 3D case and 1 2D case,  a sphere and circles. I made the sphere immersive as tocereate a more 3d effect around it while the circles i made to rotate and expand in multiple points as to make a almost dizzying sight.
+
 # Instructions
+- Press space to start
+- Press space to play when paused
+- Press space to pause when playing
+- Press left to rewind
+- Press 0 and 1 to switch visuals
+- Key 0: Inside Rotating Circle
+- Key 1 Circles in Square Formation
 
 # How it works
 
+
+I used inheritance to make OthnielsVisual extend to the Visual class.
+
+```java
+public class OthnielsVisual extends Visual {}
+```
+
+Each visual class includes an instance of OThnielsVisual as a parameter in its constructor. 
+Below, you'll find an illustration of how this instance is utilized within the constructor of the ExpandingCircles class. 
+The structure of each visual class follows a similar pattern.
+
+```java
+public class Sphere {
+    OthnielsVisual sv;
+    float rot = 0;
+    float tate = 0;
+
+    public Sphere(OthnielsVisual sv) {
+        this.sv = sv;
+    }
+```
+The KeyPressed method checks which key the user pressed. It then either pauses, plays, rewinds the song or changes the visuals. 
+
+```java
+public void keyPressed() {
+	if (keyCode == ' ')
+	{
+		if (getAudioPlayer().isPlaying()) {
+			getAudioPlayer().pause();
+		}
+		else {
+			getAudioPlayer().play();
+		}
+	}
+
+	if(keyCode == LEFT) {
+		// Rewind song
+		getAudioPlayer().cue(0);
+	}
+
+	if (keyCode >= '0' && keyCode <= '5') {
+		visual = keyCode - '0';
+	}
+}
+```
+
+I then used a switch case to switch between the visuals depending on whether 0 or 1 was pressed.
+
+```java
+        switch (visual)
+        {
+            case 0:
+            {
+                sph.render();
+                strokeWeight(10);
+                break;
+            }
+            case 1:
+            {
+                circ.render();
+                break;
+            }
+        }
+```
+
 # What I am most proud of in the assignment
 
-# Markdown Tutorial
+What I find myself most proud of was not only my creation of the spere but the creativity I held to be able to think to make it immersive.
 
-This is *emphasis*
 
-This is a bulleted list
+# Images
+Key 1: Circles
 
-- Item
-- Item
+![An image](images/Screenshot%202024-04-28%20234852.png)
 
-This is a numbered list
+Key 2: Sphere
+![Another image](images/Screenshot%202024-04-28%20234903.png)
 
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
+Youtube: [OOP Assignment 2024 - Music Visualiser | Othniel Alfa](https://youtu.be/-k9Wtb7JNf8)

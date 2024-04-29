@@ -28,7 +28,7 @@ I used inheritance to make OthnielsVisual extend to the Visual class.
 ```java
 public class OthnielsVisual extends Visual {}
 ```
-
+s
 Each visual class includes an instance of OThnielsVisual as a parameter in its constructor. 
 Below, you'll find an illustration of how this instance is utilized within the constructor of the ExpandingCircles class. 
 The structure of each visual class follows a similar pattern.

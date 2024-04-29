@@ -12,10 +12,7 @@ public class Main {
         processing.core.PApplet.runSketch(a, new OthnielsVisual());
     }
 
-    public static void main(String[] args) {
-        Main main = new Main();
-        main.startUI();
-    }
+
     public static void main(String[] args) {
         Main main = new Main();
         main.startUI();

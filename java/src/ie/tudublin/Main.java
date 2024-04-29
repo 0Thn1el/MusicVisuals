@@ -16,4 +16,8 @@ public class Main {
         Main main = new Main();
         main.startUI();
     }
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.startUI();
+    }
 }
